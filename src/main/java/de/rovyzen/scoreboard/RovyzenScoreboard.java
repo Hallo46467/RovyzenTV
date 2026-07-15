@@ -37,11 +37,18 @@ public class RovyzenScoreboard extends JavaPlugin {
             line = line.replace("%players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                     .replace("%player%", player.getName())
                     .replace("%ping%", String.valueOf(player.getPing()))
-                    .replace("%rank%", "Spieler");
+                    .replace("%rank%", getRank(player));
             obj.getScore(color(line)).setScore(score--);
         }
 
         player.setScoreboard(board);
+    }
+
+    private String getRank(Player player) {
+        if (player.hasPermission("rovyzen.owner")) return "Owner";
+        if (player.hasPermission("rovyzen.admin")) return "Admin";
+        if (player.hasPermission("rovyzen.mod")) return "Moderator";
+        return "Spieler";
     }
 
     private String color(String text) {
