@@ -28,8 +28,7 @@ public class RovyzenScoreboard extends JavaPlugin {
 
     private void createScoreboard(Player player) {
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
-        String title = color(config.getString("scoreboard.title", "&5&lRovyzenTV"));
-        Objective obj = board.registerNewObjective("rovyzen", "dummy", title);
+        Objective obj = board.registerNewObjective("rovyzen", "dummy", color(config.getString("scoreboard.title", "&5&lRovyzenTV")));
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int score = config.getStringList("scoreboard.lines").size();
@@ -38,10 +37,21 @@ public class RovyzenScoreboard extends JavaPlugin {
                     .replace("%player%", player.getName())
                     .replace("%ping%", String.valueOf(player.getPing()))
                     .replace("%rank%", getRank(player));
+            line = applyPlaceholderAPI(player, line);
             obj.getScore(color(line)).setScore(score--);
         }
 
         player.setScoreboard(board);
+    }
+
+    private String applyPlaceholderAPI(Player player, String text) {
+        try {
+            Class<?> api = Class.forName("me.clip.placeholderapi.PlaceholderAPI");
+            return (String) api.getMethod("setPlaceholders", Player.class, String.class)
+                    .invoke(null, player, text);
+        } catch (Exception ignored) {
+            return text;
+        }
     }
 
     private String getRank(Player player) {
