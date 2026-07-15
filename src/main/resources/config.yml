@@ -1,0 +1,11 @@
+scoreboard:
+  title: "&5&lRovyzenTV"
+  update-time: 40
+  lines:
+    - "&7&m----------------"
+    - "&fSpieler: &a%players%"
+    - "&fName: &b%player%"
+    - "&fRang: &6%rank%"
+    - "&fPing: &e%ping%ms"
+    - "&dRovyzen Network"
+    - "&7&m----------------"
