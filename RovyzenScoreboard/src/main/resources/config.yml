@@ -1,0 +1,18 @@
+scoreboard:
+  enabled: true
+  title: "&b&lRovyzenTV"
+  update-seconds: 2
+  lines:
+    - "&7&m----------------"
+    - "&fSpieler: &b%player_name%"
+    - ""
+    - "&aLand:"
+    - "&f%lands_land_name_here%"
+    - "&aBesitzer:"
+    - "&f%lands_land_owner_here%"
+    - ""
+    - "&eSpielzeit:"
+    - "&f%statistic_time_played%"
+    - ""
+    - "&7Online: &f%server_online%"
+    - "&7&m----------------"
