@@ -1,0 +1,6 @@
+name: RovyzenScoreboard
+version: 1.0.0
+main: de.rovyzen.scoreboard.RovyzenScoreboard
+api-version: '1.21'
+author: RovyzenTV
+description: Custom scoreboard plugin for RovyzenTV Minecraft Server
