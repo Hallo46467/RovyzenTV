@@ -1,0 +1,22 @@
+name: RovyzenScoreboard
+version: 1.0.0
+main: de.rovyzentv.scoreboard.RovyzenScoreboard
+api-version: '1.21'
+author: RovyzenTV
+softdepend:
+  - PlaceholderAPI
+  - Lands
+  - LuckPerms
+  - Vault
+commands:
+  rovyreload:
+    description: Reloads RovyzenScoreboard
+    permission: rovyzen.reload
+  rovytoggle:
+    description: Toggle scoreboard
+    permission: rovyzen.toggle
+permissions:
+  rovyzen.reload:
+    default: op
+  rovyzen.toggle:
+    default: true
