@@ -36,7 +36,7 @@ public class RovyzenScoreboard extends JavaPlugin {
         for (String line : config.getStringList("scoreboard.lines")) {
             line = line.replace("%players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                     .replace("%player%", player.getName())
-                    .replace("%ping%", "0")
+                    .replace("%ping%", String.valueOf(player.getPing()))
                     .replace("%rank%", "Spieler");
             obj.getScore(color(line)).setScore(score--);
         }
