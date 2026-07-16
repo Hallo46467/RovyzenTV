@@ -1,6 +1,7 @@
 package de.rovyzen.scoreboard.manager;
 
 import de.rovyzen.scoreboard.RovyzenScoreboard;
+import de.rovyzen.scoreboard.command.ToggleCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -17,18 +18,13 @@ public class ScoreboardManager {
     }
 
     public void update(Player player) {
+        if (ToggleCommand.isDisabled(player)) return;
+
         Scoreboard board = Bukkit.getScoreboardManager().getNewScoreboard();
-
-        Objective objective = board.registerNewObjective(
-                "rovyzen",
-                "dummy",
-                color(plugin.getConfig().getString("scoreboard.title", "&6Rovyzen"))
-        );
-
+        Objective objective = board.registerNewObjective("rovyzen", "dummy", color(plugin.getConfig().getString("scoreboard.title", "&6Rovyzen")));
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         int score = plugin.getConfig().getStringList("scoreboard.lines").size();
-
         for (String line : plugin.getConfig().getStringList("scoreboard.lines")) {
             line = replacePlaceholders(player, line);
             objective.getScore(color(line)).setScore(score--);
@@ -44,8 +40,7 @@ public class ScoreboardManager {
     }
 
     private String replacePlaceholders(Player player, String text) {
-        return text
-                .replace("%player%", player.getName())
+        return text.replace("%player%", player.getName())
                 .replace("%players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                 .replace("%ping%", String.valueOf(player.getPing()));
     }
