@@ -1,7 +1,21 @@
 name: RovyzenScoreboard
-version: 1.0.1
+version: 2.0.0
 main: de.rovyzen.scoreboard.RovyzenScoreboard
 api-version: '1.21'
 author: RovyzenTV
 description: Custom scoreboard plugin for RovyzenTV Minecraft Server
 softdepend: [PlaceholderAPI]
+
+commands:
+  scoreboard:
+    description: Scoreboard Hauptbefehl
+    usage: /scoreboard
+  scoreboardreload:
+    description: Reload scoreboard config
+    usage: /scoreboardreload
+
+permissions:
+  rovyzen.scoreboard:
+    default: true
+  rovyzen.reload:
+    default: op
